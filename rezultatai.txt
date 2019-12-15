@@ -1,18 +1,20 @@
   Mokytojai  
-Vardas       Petrauskas   Geografija5012
-Apolonijus   Pavardenis   Matematika0
-Informatikas   Jonaitis   Informatika7273868
-Valentinas   Gudrauskas   Chemija4925194
-Jadvyga      Keturake   Fizika1981252461
+Vardas       Petrauskas   Geografija  1
+Apolonijus   Pavardenis   Matematika  1
+Informatikas   Jonaitis   Informatika  2
+Valentinas   Gudrauskas   Chemija  3
+Jadvyga      Keturake   Fizika  4
  Mokiniai  
-Jonas        Karciauskas   Geografija   7
-Petras       Petraitis   Matematika   5
-Alfonsas     Studentauskas   Informatika   8
-Rita         Statinaite   Chemija   9
-Laima        Kedziuviene   Fizika   2
-Simona       Padvelskyte   Informatika   10
-Raminta      Masiulyte   Chemija   3
-Deividas     Stankus   Fizika   4
-Jonas        Kurtinaitis   Chemija   8
-Valdas       Sarkauskas   Fizika   7
-Justas       Pavardauskas   Fizika   7
+Jonas        Karciauskas   Geografija  7
+Petras       Petraitis   Matematika  5
+Alfonsas     Studentauskas   Informatika  8
+Rita         Statinaite   Chemija  9
+Laima        Kedziuviene   Fizika  2
+Simona       Padvelskyte   Informatika  10
+Raminta      Masiulyte   Chemija  3
+Deividas     Stankus   Fizika  4
+Jonas        Kurtinaitis   Chemija  8
+Valdas       Sarkauskas   Fizika  7
+Justas       Pavardauskas   Fizika  7
+Daugiausia mokiniu turi   Keturake    Jadvygakuri desto  Fizika   4-iems mokiniams
+Mokytojas kurio mokiniai mokosi geriausiai Informatikas  Informatika   9

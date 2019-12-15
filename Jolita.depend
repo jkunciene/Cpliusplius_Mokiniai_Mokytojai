@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1576421790 source:d:\jolitos\c++\mokiniai mokytojai\cpliusplius_mokiniai_mokytojai\main.cpp
+	<iostream>
+	<fstream>
+	<iomanip>
+

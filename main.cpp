@@ -11,6 +11,7 @@ struct mokytojai{
     string pavarde;
     string dalykas;
     int mokSk;
+    float vidurkis;
 
 };
 struct mokiniai{
@@ -28,10 +29,14 @@ void skaitomMokinius(mokiniai Duomenys[], int kiekis, const char byla[]);
 void rasomMokytojus(mokytojai Duomenys[], int kiekis, string text);
 void rasomMokinius(mokiniai Duomenys[], int kiekis, string text);
 void ieskomMokiniuSkMokytojui(mokytojai DuomenysMokyt[], int kiekMokyt, mokiniai DuomenysMokin[], int kiekMokin);
+int ieskomMAXMokiniu(mokytojai Duomenys[], int kiekis);
+void ieskomGeriausioVidurkio(mokytojai DuomenysMokyt[], int kiekMokyt, mokiniai DuomenysMokin[], int kiekMokin);
+int ieskomMAXVidurkio(mokytojai Duomenys[], int kiekis);
 
 int main()
 {
-    int kiekMokytoju, kiekMokiniu;
+    int kiekMokytoju, kiekMokiniu, daugMok, vidurk;
+
     const char duomenysMokytojai[] = "Mokytojai.txt";
     const char duomenysMokiniai[] = "Mokiniai.txt";
 
@@ -45,11 +50,20 @@ int main()
 
     skaitomMokytoju(Mokytojai, kiekMokytoju, duomenysMokytojai);
     skaitomMokinius(Mokiniai, kiekMokiniu, duomenysMokiniai);
-    rasomMokytojus(Mokytojai, kiekMokytoju, "  Mokytojai  \n");
-    rasomMokinius(Mokiniai, kiekMokiniu, " Mokiniai  \n");
 
     ieskomMokiniuSkMokytojui(Mokytojai, kiekMokytoju, Mokiniai, kiekMokiniu);
 
+    daugMok=ieskomMAXMokiniu(Mokytojai, kiekMokytoju);
+    ieskomGeriausioVidurkio(Mokytojai, kiekMokytoju, Mokiniai, kiekMokiniu);
+    vidurk=ieskomMAXVidurkio(Mokytojai, kiekMokytoju);
+
+
+
+    rasomMokytojus(Mokytojai, kiekMokytoju, "  Mokytojai  \n");
+    rasomMokinius(Mokiniai, kiekMokiniu, " Mokiniai  \n");
+
+    out<<"Daugiausia mokiniu turi   "<<Mokytojai[daugMok].pavarde<<"    "<<Mokytojai[daugMok].vardas<<"kuri desto  "<<Mokytojai[daugMok].dalykas<<"   "<<Mokytojai[daugMok].mokSk<<"-iems mokiniams"<<endl;
+    out<<"Mokytojas kurio mokiniai mokosi geriausiai "<<Mokytojai[vidurk].vardas<<"  "<<Mokytojai[vidurk].dalykas<<"   "<<Mokytojai[vidurk].vidurkis<<endl;
 
     out.close();
     return 0;
@@ -92,20 +106,8 @@ void skaitomMokinius(mokiniai Duomenys[], int kiekis, const char byla[]){
     }
     in.close();
 }
-void rasomMokytojus(mokytojai Duomenys[], int kiekis, string text){
-     out<<text;
-    for(int i=0; i<kiekis; i++){
-        out<<setw(10)<<left<<Duomenys[i].vardas<<"   "<<Duomenys[i].pavarde<<"   "<<Duomenys[i].dalykas<<Duomenys[i].mokSk;
-        out<<endl;
-    }
-}
-void rasomMokinius(mokiniai Duomenys[], int kiekis, string text){
-     out<<text;
-    for(int i=0; i<kiekis; i++){
-        out<<setw(10)<<left<<Duomenys[i].vardas<<"   "<<Duomenys[i].pavarde<<"   "<<Duomenys[i].dalykas<<"   "<<Duomenys[i].pazymys;
-        out<<endl;
-    }
-}
+
+
 void ieskomMokiniuSkMokytojui(mokytojai DuomenysMokyt[], int kiekMokyt, mokiniai DuomenysMokin[], int kiekMokin){
 int laikinas;
     for(int i=0; i< kiekMokyt; i++){
@@ -123,3 +125,60 @@ int laikinas;
     }
 
 }
+
+int ieskomMAXMokiniu(mokytojai Duomenys[], int kiekis){
+    int vieta=0;
+
+    for(int i=0; i<kiekis; i++){
+
+        if(Duomenys[i].mokSk>Duomenys[vieta].mokSk)
+            vieta=i;
+
+        }
+        return vieta;
+    }
+void ieskomGeriausioVidurkio(mokytojai DuomenysMokyt[], int kiekMokyt, mokiniai DuomenysMokin[], int kiekMokin){
+    int laikinas, suma;
+
+    for(int i=0; i< kiekMokyt; i++){
+        laikinas=0;
+        suma=0;
+        for(int j=0; j<kiekMokin; j++){
+
+                if(DuomenysMokyt[i].dalykas==DuomenysMokin[j].dalykas){
+                    laikinas++;
+                    suma+=DuomenysMokin[j].pazymys;
+                }
+        }
+                DuomenysMokyt[i].vidurkis = float(suma)/float(laikinas);
+                cout<<DuomenysMokyt[i].vardas<<"    "<<DuomenysMokyt[i].dalykas<<"  "<<DuomenysMokyt[i].vidurkis<<endl;
+
+    }
+}
+int ieskomMAXVidurkio(mokytojai Duomenys[], int kiekis){
+int vieta=0;
+
+    for(int i=0; i<kiekis; i++){
+
+        if(Duomenys[i].vidurkis>Duomenys[vieta].vidurkis)
+            vieta=i;
+
+        }
+        return vieta;
+    }
+
+void rasomMokytojus(mokytojai Duomenys[], int kiekis, string text){
+     out<<text;
+    for(int i=0; i<kiekis; i++){
+        out<<setw(10)<<left<<Duomenys[i].vardas<<"   "<<Duomenys[i].pavarde<<"   "<<Duomenys[i].dalykas<<"  "<<Duomenys[i].mokSk;
+        out<<endl;
+    }
+}
+void rasomMokinius(mokiniai Duomenys[], int kiekis, string text){
+     out<<text;
+    for(int i=0; i<kiekis; i++){
+        out<<setw(10)<<left<<Duomenys[i].vardas<<"   "<<Duomenys[i].pavarde<<"   "<<Duomenys[i].dalykas<<"  "<<Duomenys[i].pazymys;
+        out<<endl;
+    }
+}
+
